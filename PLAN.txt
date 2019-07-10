@@ -1,0 +1,36 @@
+TASKS 
+
+TO DO: (numbered based on prototype)
+- Colour picker (6)
+	- ROGBIV hardcoding - make arrays of 16 hex codes (MIKELI)
+	- UI grid setup to read from array (ELLIE)
+	- (nice to have) Create method to auto-generate hex codes (CHANTAL)
+
+- Welcome screen (2)
+	- Display summary of palettes and "new" button
+		- Hardcode fake palettes
+		- Display previews (ELLIE)
+
+- Theme selection (4)
+	- Hardcoded arrays (MIKELI)
+		- Monochromatic, complementary, shades
+	- Displays (ELLIE)
+
+- Login screen (1) (CHANTAL)
+	- User has account
+	- User creates new account
+	- "I don't want an account"
+
+- Create new palette screen (3) (ELLIE)
+	- Dimensions set to w3 x h2, create grid
+	- Limit selection of base colours to 3 primary (for now)
+
+- Hamburger menu
+	- Log out
+	- User preferences (email, etc.)
+	- My Palettes 
+
+- Palette preview (5)
+
+
+COMPLETED:

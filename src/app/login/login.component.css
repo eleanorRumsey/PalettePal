@@ -26,7 +26,12 @@
   .input-field {
     margin-bottom: 25;
   }
-  .input {
+  .username {
+    font-size: 18;
+    placeholder-color: #A8A8A8;
+  }
+  
+  .password {
     font-size: 18;
     placeholder-color: #A8A8A8;
   }
@@ -38,15 +43,16 @@
     border-radius: 5;
     font-size: 20;
   }
-  .login-label {
-    horizontal-align: center;
-    color: #A8A8A8;
-    font-size: 16;
-  }
-  .sign-up-label {
-    margin-bottom: 20;
-  }
-  .bold {
-    color: #000000; 
+  
+  .validation {
+      background-color: #a94442;
+      color: #ffffff;
   }
   
+  .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }

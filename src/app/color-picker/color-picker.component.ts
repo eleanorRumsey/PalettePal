@@ -24,7 +24,7 @@ export class ColorPickerComponent implements OnInit {
     '#FF7435','#FF7300','#FF6700','#FF971A'];
 
   yellowHex = [
-    '#F8DE7E','#FADASE','#F9A602','#FFD300',
+    '#F8DE7E','#FADA5E','#F9A602','#FFD300',
     '#D2B55B','#C3B091','#DAA520','#FCF4A3',
     '#FCD12A','#FFC30B','#C49102','#FCE205',
     '#FDA50F','#CC7722','#FFBF00','#EFFD5F'];

@@ -1,1 +1,25 @@
-/* Add mobile styles for the component here.  */
+.palette-title {
+    font-size: 30px;
+    margin-bottom: 200px;
+    margin-top: 200px;
+}
+
+.color {
+    border-radius: 20%;
+    padding-top: 70%;
+    margin: 15px;
+}
+
+.save-button {
+    background-color: blue;
+    border-radius: 5;
+    color: white;
+    vertical-align: middle;
+    width: 20%;
+    margin-top: 200px;
+}
+
+.save-button:active {
+    background-color: lightslategray;
+    color:white;
+}

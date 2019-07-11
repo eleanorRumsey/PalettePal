@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorPickerComponent implements OnInit {
 
+  mockArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
   constructor() { }
 
   ngOnInit() {

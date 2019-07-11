@@ -40,15 +40,12 @@ export class PaletteComponent implements OnInit {
     for(let i in this.codes){
       this.palette[i].code = this.codes[i];
     }
-
-    console.log(this.palette);
   }
 
   ngOnInit() {
   }
 
   colorSelected(color: any){
-    console.log("color selected: " + color.index);
     let navigationExtras: NavigationExtras = {
       queryParams: {
           "index": color.index,

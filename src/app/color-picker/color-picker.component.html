@@ -1,15 +1,16 @@
+<ActionBar title="Color Selection"></ActionBar>
 <FlexboxLayout flexDirection="column" alignItems="center">
-    <Label text="Palette: Rainbow" class="palette-title"></Label>
-    <Label text="Press any colour to modify"></Label>
-    <FlexboxLayout flexDirection="row" flexWrap="wrap" width="360" alignItems="center" justifyContent="center">
+    <ListPicker [items]="items" selectedIndex="{{ this.listPicker.selectedIndex }}" class="picker" row="3"></ListPicker>
+    <FlexboxLayout flexDirection="row" flexWrap="wrap" width="350" alignItems="center" justifyContent="center">
         <Label 
             *ngFor="let color of mockArray" 
             text="{{ color }}" 
-            width="100" 
-            height="100" 
+            width="70" 
+            height="70" 
             backgroundColor="{{ color }}" 
             class="color"
+            (tap)="colorSelected(color)"
             ></Label>
     </FlexboxLayout>
-    <Button text="save" class="save-button"></Button>
+    <Button text="save" class="save-button" (tap)="save()"></Button>
 </FlexboxLayout>

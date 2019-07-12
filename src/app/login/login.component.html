@@ -6,10 +6,6 @@
             <TextField required class="username" hint="Username" autocorrect="false"
                 required [(ngModel)]="user.username" autocapitalizationType="none"
                 returnKeyType="next" (returnPress)="focusPassword()"></TextField>
-            <Label class="validation" [visibility]="elementModel.valid ? 'collapse' : 'visible'"
-                text="Field is required"></Label>
-            <Label [text]="element.className"></Label>
-            <Label [text]="elementModel.valid"></Label>
             <StackLayout class="hr-light"></StackLayout>
         </StackLayout>
 
@@ -17,10 +13,6 @@
             <TextField required #password class="password" hint="Password"
                 secure="true" required [(ngModel)]="user.password"
                 (returnPress)="focusConfirmPassword()"></TextField>
-            <Label class="validation" [visibility]="elementModel.valid ? 'collapse' : 'visible'"
-                text="Field is required"></Label>
-            <Label [text]="element.className"></Label>
-            <Label [text]="elementModel.valid"></Label>
             <StackLayout class="hr-light"></StackLayout>
         </StackLayout>
 

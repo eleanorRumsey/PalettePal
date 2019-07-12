@@ -4,6 +4,8 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from './login/login.component';
+import { ColorPickerComponent } from './color-picker/color-picker.component';
+import { PaletteComponent } from "./palette/palette.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -21,7 +23,9 @@ import { LoginComponent } from './login/login.component';
     ],
     declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        ColorPickerComponent,
+        PaletteComponent
     ],
     providers: [],
     schemas: [

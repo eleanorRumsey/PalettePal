@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { PaletteComponent } from "./palette/palette.component";
+import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -23,7 +24,8 @@ import { PaletteComponent } from "./palette/palette.component";
     declarations: [
         AppComponent,
         ColorPickerComponent,
-        PaletteComponent
+        PaletteComponent,
+        ExistingPalettesComponent
     ],
     providers: [],
     schemas: [

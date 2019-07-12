@@ -4,9 +4,11 @@ import { Routes } from "@angular/router";
 
 import { ColorPickerComponent } from "./color-picker/color-picker.component";
 import { PaletteComponent } from "./palette/palette.component";
+import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/palette", pathMatch: "full" },
+    { path: "", redirectTo: "/existing-palettes", pathMatch: "full" },
+    { path: "existing-palettes", component: ExistingPalettesComponent },
     { path: "palette", component: PaletteComponent},
     { path: "colorpicker", component: ColorPickerComponent}
 ];

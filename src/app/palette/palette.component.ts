@@ -25,11 +25,15 @@ export class PaletteComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
+      if(params["codes"]){
+        this.codes = params["codes"];
+        console.log("codes: " + this.codes);
+      }
+
       if(params["index"] && params["code"]){
         this.indexToChange = params["index"];
         this.newCode = params["code"];
-        this.codes = params["codes"];
-      } else {
+      } else if(!params["codes"] && !params["index"] && !params["code"]) {
         for(let color of this.palette){
           color.code = '#dcdfe3';
           this.codes.push('#dcdfe3');
@@ -52,8 +56,8 @@ export class PaletteComponent implements OnInit {
           "code": color.code,
           "codes": this.codes
       }
-  };
-  this.router.navigate(["colorpicker"], navigationExtras);
+    };
+    this.router.navigate(["colorpicker"], navigationExtras);
   }
 
 }

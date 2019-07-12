@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { LoginComponent } from './login/login.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { PaletteComponent } from "./palette/palette.component";
 import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
@@ -23,6 +24,7 @@ import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes
     ],
     declarations: [
         AppComponent,
+        LoginComponent,
         ColorPickerComponent,
         PaletteComponent,
         ExistingPalettesComponent

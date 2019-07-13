@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TextField } from "tns-core-modules/ui/text-field";
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "Login",
@@ -36,5 +38,10 @@ export class LoginComponent implements OnInit {
 
     confirmPassword(){
         console.log("Confirming password...");
+    }
+
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
     }
 }

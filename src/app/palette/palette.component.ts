@@ -19,7 +19,7 @@ export class PaletteComponent implements OnInit {
   ];
 
   codes = [];
-
+  name: string = '';
   indexToChange: number = -1;
   newCode: string = '';
 
@@ -27,7 +27,11 @@ export class PaletteComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if(params["codes"]){
         this.codes = params["codes"];
-        console.log("codes: " + this.codes);
+      }
+
+      if(params["paletteName"]){
+        this.name = params["paletteName"];
+        console.log("name: " + this.name);
       }
 
       if(params["index"] && params["code"]){

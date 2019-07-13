@@ -31,7 +31,7 @@ export class ExistingPalettesComponent implements OnInit {
   }
 
   createNewPalette(){
-    this.router.navigate(["palette"]);
+    this.router.navigate(["new-palette"]);
   }
 
   editPalette(palette: any){

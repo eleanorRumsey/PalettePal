@@ -65,7 +65,6 @@ export class PaletteComponent implements OnInit {
   }
 
   save(){
-    console.log('name: ' + this.name);
     let navigationExtras: NavigationExtras = {
       queryParams: {
           "name": this.name,

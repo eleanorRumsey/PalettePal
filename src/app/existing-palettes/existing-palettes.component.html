@@ -1,6 +1,6 @@
 <ActionBar title="My Palettes"></ActionBar>
 <FlexboxLayout flexDirection="column" alignItems="center">
-    <Label text = "Welcome, {{ user }}!" class="welcome-message"></Label>
+    <Label text = "Welcome{{ user }}!" class="welcome-message"></Label>
     <FlexboxLayout flexDirection="row" flexWrap="wrap" justifyContent="space-between" class="palettes-container">
         <FlexboxLayout 
             *ngFor="let palette of mockPalettes" 

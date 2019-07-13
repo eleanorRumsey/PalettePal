@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
+import { Label } from "tns-core-modules/ui/label";
 
 
 @Component({
@@ -59,6 +60,9 @@ export class ColorPickerComponent implements OnInit {
 
   pickerChoice: string = "Red";
 
+  selectedIndex: number = -1;
+  selectedArray: string[] = [];
+
   name: string;
   indexToChange: number;
   code: string;
@@ -79,6 +83,10 @@ export class ColorPickerComponent implements OnInit {
   colorSelected(color: string){
     this.code = color;
     this.codes[this.indexToChange] = this.code;
+    let hexes = this.getArray();
+    let index = hexes.indexOf(color);
+    this.selectedArray = hexes;
+    this.selectedIndex = index;
   }
 
   getArray(): string[]{

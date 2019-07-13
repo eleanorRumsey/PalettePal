@@ -1,15 +1,13 @@
-<FlexboxLayout class="page">
+<FlexboxLayout class="page" alignItems="center" justifyContent="center">
     <StackLayout class="form">
-        <Label class="header" text="Palette Pal"></Label>
+        <Label class="logo" text="Palette Pal"></Label>
         <StackLayout class="input-field">
             <TextField required class="username" hint="Username" autocorrect="false" autocapitalizationType="none"
                 (textChange)="confirmUserName($event)"></TextField>
-            <StackLayout class="hr-light"></StackLayout>
         </StackLayout>
         <StackLayout class="input-field">
             <TextField required #password class="password" hint="Password"
                 secure="true" (textChange)="confirmPassword($event)"></TextField>
-            <StackLayout class="hr-light"></StackLayout>
         </StackLayout>
         <Button text="Login" (tap)="login()" class="btnLogin"></Button>
         <Button text="Create Account"></Button>

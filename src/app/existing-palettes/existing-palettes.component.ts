@@ -10,7 +10,7 @@ import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
 })
 export class ExistingPalettesComponent implements OnInit {
 
-  user = "Kyrese";
+  user = "";
 
   mockPalettes = [
     { name: "Palette 1",
@@ -21,7 +21,11 @@ export class ExistingPalettesComponent implements OnInit {
       colors: ["aqua", "aliceblue", "aquamarine", "palegoldenrod", "turquoise", "blue"]}
   ];
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { 
+    this.route.queryParams.subscribe(params => {
+      this.user = params["username"];
+    });
+  }
 
   ngOnInit() {
   }

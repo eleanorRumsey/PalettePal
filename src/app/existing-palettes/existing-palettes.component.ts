@@ -23,7 +23,19 @@ export class ExistingPalettesComponent implements OnInit {
   
   constructor(private router: Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
-      this.user = params["username"];
+      if(params["username"]){
+        this.user = params["username"];
+      }
+
+      console.log("name: " + params["name"]);
+      console.log("colors: " + params["codes"]);
+
+      let newPalette = {
+        name: params["name"],
+        colors: params["codes"]
+      }
+      this.mockPalettes.push(newPalette);
+      
     });
   }
 

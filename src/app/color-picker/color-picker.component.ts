@@ -59,12 +59,14 @@ export class ColorPickerComponent implements OnInit {
 
   pickerChoice: string = "Red";
 
+  name: string;
   indexToChange: number;
   code: string;
   codes: string[];
 
   constructor(private router: Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
+      this.name = params["name"];
       this.indexToChange = params["index"];
       this.code = params["code"];
       this.codes = params["codes"];
@@ -112,6 +114,7 @@ export class ColorPickerComponent implements OnInit {
   save(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
+          "paletteName": this.name,
           "index": this.indexToChange,
           "code": this.code,
           "codes": this.codes

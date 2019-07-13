@@ -31,7 +31,6 @@ export class PaletteComponent implements OnInit {
 
       if(params["paletteName"]){
         this.name = params["paletteName"];
-        console.log("name: " + this.name);
       }
 
       if(params["index"] && params["code"]){
@@ -56,12 +55,24 @@ export class PaletteComponent implements OnInit {
   colorSelected(color: any){
     let navigationExtras: NavigationExtras = {
       queryParams: {
+          "name": this.name,
           "index": color.index,
           "code": color.code,
           "codes": this.codes
       }
     };
     this.router.navigate(["colorpicker"], navigationExtras);
+  }
+
+  save(){
+    console.log('name: ' + this.name);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "name": this.name,
+          "codes": this.codes
+      }
+    };
+    this.router.navigate(["existing-palettes"], navigationExtras);
   }
 
 }

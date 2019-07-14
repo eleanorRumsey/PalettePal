@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
-
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
   selector: 'ns-existing-palettes',
@@ -44,5 +45,10 @@ export class ExistingPalettesComponent implements OnInit {
     };
     this.router.navigate(["palette"], navigationExtras);
   }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
+}
 
 }

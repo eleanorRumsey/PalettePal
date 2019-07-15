@@ -1,7 +1,7 @@
 <ActionBar class="action-bar">
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()" android.position="popup"></NavigationButton>
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
+        ios.position="right" android.position="popup">
     </ActionItem>
     <Label class="action-bar-title" text="Color Selection"></Label>
 </ActionBar>

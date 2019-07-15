@@ -1,0 +1,21 @@
+
+.color-picker {
+    width: 25%;
+    margin-right: 15px;
+}
+
+.palette-preview{
+    width: 520px;
+    height: 300px;
+    margin: 50px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #dcdfe3;
+    border-radius: 20%;
+    padding: 50px;
+}
+
+.color-preview {
+    width: 16%;
+    height: 50%;
+}

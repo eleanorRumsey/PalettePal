@@ -35,7 +35,7 @@ export class NewPaletteComponent implements OnInit {
   }
 
   theme(){
-
+    this.router.navigate(["theme-picker"]);
   }
 
   goBack() {

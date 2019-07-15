@@ -13,13 +13,13 @@ export class ExistingPalettesComponent implements OnInit {
 
   user = "";
 
-  mockPalettes = [
-    { name: "Palette 1",
-      colors: ["red", "blue", "pink", "goldenrod", "blueviolet", "blue"]},
-    { name: "Palette 2",
-      colors: ["pink", "yellow", "yellowgreen", "black", "red", "lightblue"]},
-    { name: "Palette 3",
-      colors: ["aqua", "aliceblue", "aquamarine", "palegoldenrod", "turquoise", "blue"]}
+  palettes = [
+    { name: "Garden Theme",
+      colors: ['#08BF20','#03400B','#058015','#804B28','#BF6B34','#C27388']},
+    { name: "Palette Theme",
+      colors: ['#FFBAB5','#FDF5CC','#CAFDCD','#D3EFFC','#E0C3FD','#FDFAAF']},
+    { name: "School Project Theme",
+      colors: ['#7D7C56','#BF9275','#C07892','#8F89C0','#7AB9C0','#6BC066']}
   ]; 
   
   constructor(private router: Router, private route: ActivatedRoute) { 
@@ -41,16 +41,16 @@ export class ExistingPalettesComponent implements OnInit {
 
         let exists = false;
 
-        for(let palette of this.mockPalettes){
+        for(let palette of this.palettes){
           if(palette.name === newPalette.name){
             exists = true;
-            let index = this.mockPalettes.indexOf(palette);
-            this.mockPalettes[index] = newPalette;
+            let index = this.palettes.indexOf(palette);
+            this.palettes[index] = newPalette;
           }
         }
 
         if(!exists){
-          this.mockPalettes.push(newPalette);
+          this.palettes.push(newPalette);
         }
       }
       

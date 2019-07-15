@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
 import { Label } from "tns-core-modules/ui/label";
+import { RouterExtensions } from "nativescript-angular/router";
 
 
 @Component({
@@ -68,7 +69,7 @@ export class ColorPickerComponent implements OnInit {
   code: string;
   codes: string[];
 
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
       this.name = params["name"];
       this.indexToChange = params["index"];
@@ -131,6 +132,10 @@ export class ColorPickerComponent implements OnInit {
     
     this.router.navigate(["palette"], navigationExtras);
   
+  }
+
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
   }
 
 }

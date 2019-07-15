@@ -1,4 +1,6 @@
-<ActionBar title="My Palettes"></ActionBar>
+<ActionBar title="My Palettes">
+    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+</ActionBar>
 <FlexboxLayout flexDirection="column" alignItems="center">
     <Label text = "Welcome{{ user }}!" class="welcome-message"></Label>
     <FlexboxLayout flexDirection="row" flexWrap="wrap" justifyContent="space-between" class="palettes-container">

@@ -1,4 +1,6 @@
-<ActionBar title="New Palette"></ActionBar>
+<ActionBar title="New Palette">
+    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+</ActionBar>
 <FlexboxLayout justifyContent="space-around" flexDirection="column" class="main-container">
     <FlexboxLayout flexDirection="column">
         <Label class="info-text" text="Name your palette: "></Label>

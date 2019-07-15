@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TextField } from "tns-core-modules/ui/text-field";
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
   selector: 'ns-new-palette',
@@ -12,7 +13,7 @@ export class NewPaletteComponent implements OnInit {
 
   paletteName: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private routerExtensions: RouterExtensions) { }
 
   ngOnInit() {
   }
@@ -33,5 +34,9 @@ export class NewPaletteComponent implements OnInit {
 
   theme(){
 
+  }
+
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
   }
 }

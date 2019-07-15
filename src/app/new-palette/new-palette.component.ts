@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TextField } from "tns-core-modules/ui/text-field";
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
   selector: 'ns-new-palette',
@@ -38,5 +40,10 @@ export class NewPaletteComponent implements OnInit {
 
   goBack() {
     this.routerExtensions.backToPreviousPage();
+  }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
   }
 }

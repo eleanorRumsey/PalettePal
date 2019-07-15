@@ -1,6 +1,10 @@
-<ActionBar title="New Palette">
-    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
-</ActionBar>
+<ActionBar class="action-bar" title="New Palette">
+        <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+            ios.position="left">
+        </ActionItem>
+    </ActionBar>
 <FlexboxLayout justifyContent="space-around" flexDirection="column" class="main-container">
     <FlexboxLayout flexDirection="column">
         <Label class="info-text" text="Name your palette: "></Label>

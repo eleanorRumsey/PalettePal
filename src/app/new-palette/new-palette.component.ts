@@ -35,7 +35,12 @@ export class NewPaletteComponent implements OnInit {
   }
 
   theme(){
-    this.router.navigate(["theme-picker"]);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "paletteName": this.paletteName
+      }
+    };
+    this.router.navigate(["theme-picker"], navigationExtras);
   }
 
   goBack() {

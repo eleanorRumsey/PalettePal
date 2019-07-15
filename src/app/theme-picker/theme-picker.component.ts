@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application"; 
 import { ListPicker } from "tns-core-modules/ui/list-picker";
+import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
   selector: 'ns-theme-picker',
@@ -41,8 +43,13 @@ export class ThemePickerComponent implements OnInit {
   colors = ["Red", "Yellow", "Blue"];
 
   colorChoice: string = 'Red';
+  paletteName: string = '';
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) {
+    this.route.queryParams.subscribe(params => {
+      this.paletteName = params["paletteName"];
+    });
+  }
 
   ngOnInit() {
   }
@@ -71,10 +78,14 @@ export class ThemePickerComponent implements OnInit {
     }
   }
 
-  getPalettes(){
-    for(let theme of this.getThemes()){
-      console.log(theme.name);
-    }
+  tapTheme(theme: any){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "paletteName": this.paletteName,
+          "codes": theme.colors
+      }
+    };
+    this.router.navigate(["palette"], navigationExtras);
   }
 
 }

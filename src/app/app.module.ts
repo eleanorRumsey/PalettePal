@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { PaletteComponent } from "./palette/palette.component";
 import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
+import { NewPaletteComponent } from "./new-palette/new-palette.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -29,7 +30,8 @@ import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes
         LoginComponent,
         ColorPickerComponent,
         PaletteComponent,
-        ExistingPalettesComponent
+        ExistingPalettesComponent,
+        NewPaletteComponent
     ],
     providers: [],
     schemas: [

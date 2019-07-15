@@ -20,11 +20,40 @@ export class ExistingPalettesComponent implements OnInit {
       colors: ["pink", "yellow", "yellowgreen", "black", "red", "lightblue"]},
     { name: "Palette 3",
       colors: ["aqua", "aliceblue", "aquamarine", "palegoldenrod", "turquoise", "blue"]}
-  ];
+  ]; 
   
   constructor(private router: Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
-      this.user = params["username"];
+
+      if(params["username"]){
+        let name = params["username"];
+        if(name.length > 0){
+          name = ", " + name;
+          this.user = name;
+        }
+      }
+
+      if(params["name"] && params["codes"]){
+        let newPalette = {
+          name: params["name"],
+          colors: params["codes"]
+        }
+
+        let exists = false;
+
+        for(let palette of this.mockPalettes){
+          if(palette.name === newPalette.name){
+            exists = true;
+            let index = this.mockPalettes.indexOf(palette);
+            this.mockPalettes[index] = newPalette;
+          }
+        }
+
+        if(!exists){
+          this.mockPalettes.push(newPalette);
+        }
+      }
+      
     });
   }
 
@@ -32,7 +61,7 @@ export class ExistingPalettesComponent implements OnInit {
   }
 
   createNewPalette(){
-    this.router.navigate(["palette"]);
+    this.router.navigate(["new-palette"]);
   }
 
   editPalette(palette: any){
@@ -40,7 +69,8 @@ export class ExistingPalettesComponent implements OnInit {
       queryParams: {
           "index": -1,
           "code": '',
-          "codes": palette.colors
+          "codes": palette.colors,
+          "paletteName": palette.name
       }
     };
     this.router.navigate(["palette"], navigationExtras);

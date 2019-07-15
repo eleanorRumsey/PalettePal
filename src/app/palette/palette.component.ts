@@ -21,7 +21,7 @@ export class PaletteComponent implements OnInit {
   ];
 
   codes = [];
-
+  name: string = '';
   indexToChange: number = -1;
   newCode: string = '';
 
@@ -29,7 +29,10 @@ export class PaletteComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if(params["codes"]){
         this.codes = params["codes"];
-        console.log("codes: " + this.codes);
+      }
+
+      if(params["paletteName"]){
+        this.name = params["paletteName"];
       }
 
       if(params["index"] && params["code"]){
@@ -54,6 +57,7 @@ export class PaletteComponent implements OnInit {
   colorSelected(color: any){
     let navigationExtras: NavigationExtras = {
       queryParams: {
+          "name": this.name,
           "index": color.index,
           "code": color.code,
           "codes": this.codes
@@ -62,6 +66,15 @@ export class PaletteComponent implements OnInit {
     this.router.navigate(["colorpicker"], navigationExtras);
   }
 
+  save(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "name": this.name,
+          "codes": this.codes
+      }
+    };
+    this.router.navigate(["existing-palettes"], navigationExtras);
+  }
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();

@@ -15,6 +15,7 @@
     <Label class="action-bar-title" text="New Palette"></Label>
 </ActionBar>
 <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="space-around">
+    <Label text="{{name}}"></Label>
     <FlexboxLayout flexDirection="row" flexWrap="wrap" width="350" alignItems="center" justifyContent="center">
         <Label 
             *ngFor="let color of palette" 
@@ -26,5 +27,5 @@
             (tap)="colorSelected(color)"
             ></Label>
     </FlexboxLayout>
-    <Button text="save" class="save-button"></Button>
+    <Button text="save" class="save-button" (tap)="save()"></Button>
 </FlexboxLayout>

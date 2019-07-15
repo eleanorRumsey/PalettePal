@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
+import { Label } from "tns-core-modules/ui/label";
+import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
@@ -60,12 +62,17 @@ export class ColorPickerComponent implements OnInit {
 
   pickerChoice: string = "Red";
 
+  selectedIndex: number = -1;
+  selectedArray: string[] = [];
+
+  name: string;
   indexToChange: number;
   code: string;
   codes: string[];
 
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
+      this.name = params["name"];
       this.indexToChange = params["index"];
       this.code = params["code"];
       this.codes = params["codes"];
@@ -78,6 +85,10 @@ export class ColorPickerComponent implements OnInit {
   colorSelected(color: string){
     this.code = color;
     this.codes[this.indexToChange] = this.code;
+    let hexes = this.getArray();
+    let index = hexes.indexOf(color);
+    this.selectedArray = hexes;
+    this.selectedIndex = index;
   }
 
   getArray(): string[]{
@@ -113,6 +124,7 @@ export class ColorPickerComponent implements OnInit {
   save(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
+          "paletteName": this.name,
           "index": this.indexToChange,
           "code": this.code,
           "codes": this.codes
@@ -123,9 +135,13 @@ export class ColorPickerComponent implements OnInit {
   
   }
 
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
+  }
+
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
-}
+  }
 
 }

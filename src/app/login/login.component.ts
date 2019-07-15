@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TextField } from "tns-core-modules/ui/text-field";
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import {Page} from "tns-core-modules/ui/page";
+
 
 @Component({
     selector: "Login",
@@ -12,14 +14,14 @@ export class LoginComponent implements OnInit {
 
     username: string = '';
 
-    constructor(private router: Router) {
+    constructor(private router: Router, page: Page) {
+        page.actionBarHidden = true;
     }
 
     ngOnInit(): void {
     }
 
     login(){
-        console.log("Logging in...");
         let navigationExtras: NavigationExtras = {
             queryParams: {
                 "username": this.username
@@ -31,11 +33,18 @@ export class LoginComponent implements OnInit {
     confirmUserName(args){
         let textField = <TextField>args.object;
         this.username = textField.text;
-        console.log("Confirming username as " + this.username);
     }
 
     confirmPassword(){
         console.log("Confirming password...");
     }
 
+    guest(){
+        let navigationExtras: NavigationExtras = {
+            queryParams: {
+                "username": ""
+            }
+          };
+          this.router.navigate(["existing-palettes"], navigationExtras);
+    }
 }

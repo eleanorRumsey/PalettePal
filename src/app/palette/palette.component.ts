@@ -24,6 +24,7 @@ export class PaletteComponent implements OnInit {
   name: string = '';
   indexToChange: number = -1;
   newCode: string = '';
+  palettes = [];
 
   constructor(private router: Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
@@ -33,6 +34,11 @@ export class PaletteComponent implements OnInit {
 
       if(params["paletteName"]){
         this.name = params["paletteName"];
+      }
+
+      if(params["palettes"]){
+        this.palettes = JSON.parse(params["palettes"]);
+        console.log("palettes: " + this.palettes);
       }
 
       if(params["index"] && params["code"]){
@@ -60,7 +66,8 @@ export class PaletteComponent implements OnInit {
           "name": this.name,
           "index": color.index,
           "code": color.code,
-          "codes": this.codes
+          "codes": this.codes,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["colorpicker"], navigationExtras);
@@ -70,7 +77,8 @@ export class PaletteComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
           "name": this.name,
-          "codes": this.codes
+          "codes": this.codes, 
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["existing-palettes"], navigationExtras);

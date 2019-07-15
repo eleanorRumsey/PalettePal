@@ -33,6 +33,14 @@ export class ExistingPalettesComponent implements OnInit {
         }
       }
 
+      if(params["palettes"]){
+        let p = JSON.parse(params["palettes"]);
+        console.log("p: " + p);
+        if(p.length > 0){
+          this.palettes = p;
+        }
+      }
+
       if(params["name"] && params["codes"]){
         let newPalette = {
           name: params["name"],
@@ -50,6 +58,7 @@ export class ExistingPalettesComponent implements OnInit {
         }
 
         if(!exists){
+          console.log("palette is new!");
           this.palettes.push(newPalette);
         }
       }
@@ -61,7 +70,12 @@ export class ExistingPalettesComponent implements OnInit {
   }
 
   createNewPalette(){
-    this.router.navigate(["new-palette"]);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "palettes": JSON.stringify(this.palettes)
+      }
+    };
+    this.router.navigate(["new-palette"], navigationExtras);
   }
 
   editPalette(palette: any){
@@ -70,7 +84,8 @@ export class ExistingPalettesComponent implements OnInit {
           "index": -1,
           "code": '',
           "codes": palette.colors,
-          "paletteName": palette.name
+          "paletteName": palette.name,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["palette"], navigationExtras);

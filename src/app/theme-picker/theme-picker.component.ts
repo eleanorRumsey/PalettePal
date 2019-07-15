@@ -44,9 +44,19 @@ export class ThemePickerComponent implements OnInit {
 
   colorChoice: string = 'Red';
   paletteName: string = '';
+  palettes = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) {
     this.route.queryParams.subscribe(params => {
+
+      if(params["palettes"]){
+        let p = JSON.parse(params["palettes"]);
+        console.log("p: " + p);
+        if(p.length > 0){
+          this.palettes = p;
+        }
+      }
+
       this.paletteName = params["paletteName"];
     });
   }
@@ -82,7 +92,8 @@ export class ThemePickerComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
           "paletteName": this.paletteName,
-          "codes": theme.colors
+          "codes": theme.colors,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["palette"], navigationExtras);

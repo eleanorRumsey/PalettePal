@@ -68,6 +68,7 @@ export class ColorPickerComponent implements OnInit {
   indexToChange: number;
   code: string;
   codes: string[];
+  palettes: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
@@ -75,6 +76,14 @@ export class ColorPickerComponent implements OnInit {
       this.indexToChange = params["index"];
       this.code = params["code"];
       this.codes = params["codes"];
+
+      if(params["palettes"]){
+        let p = JSON.parse(params["palettes"]);
+        console.log("p: " + p);
+        if(p.length > 0){
+          this.palettes = p;
+        }
+      }
     });
   }
 
@@ -126,7 +135,8 @@ export class ColorPickerComponent implements OnInit {
           "paletteName": this.name,
           "index": this.indexToChange,
           "code": this.code,
-          "codes": this.codes
+          "codes": this.codes,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     

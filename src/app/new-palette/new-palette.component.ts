@@ -14,8 +14,19 @@ import * as app from "tns-core-modules/application";
 export class NewPaletteComponent implements OnInit {
 
   paletteName: string = '';
+  palettes: any;
 
-  constructor(private router: Router, private routerExtensions: RouterExtensions) { }
+  constructor(private router: Router, private routerExtensions: RouterExtensions, private route: ActivatedRoute) { 
+    this.route.queryParams.subscribe(params => {
+      if(params["palettes"]){
+        let p = JSON.parse(params["palettes"]);
+        console.log("p: " + p);
+        if(p.length > 0){
+          this.palettes = p;
+        }
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -28,7 +39,8 @@ export class NewPaletteComponent implements OnInit {
   custom(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-          "paletteName": this.paletteName
+          "paletteName": this.paletteName,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["palette"], navigationExtras);
@@ -37,7 +49,8 @@ export class NewPaletteComponent implements OnInit {
   theme(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-          "paletteName": this.paletteName
+          "paletteName": this.paletteName,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["theme-picker"], navigationExtras);

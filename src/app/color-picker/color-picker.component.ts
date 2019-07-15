@@ -3,7 +3,8 @@ import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
 import { Label } from "tns-core-modules/ui/label";
 import { RouterExtensions } from "nativescript-angular/router";
-
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
   selector: 'ns-color-picker',
@@ -136,6 +137,11 @@ export class ColorPickerComponent implements OnInit {
 
   goBack() {
     this.routerExtensions.backToPreviousPage();
+  }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
   }
 
 }

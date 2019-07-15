@@ -1,5 +1,10 @@
-<ActionBar title="Color Selection">
+<ActionBar class="action-bar" title="Color Selection">
     <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Color Selection"></Label>
 </ActionBar>
 <FlexboxLayout flexDirection="column" alignItems="center">
     <ListPicker [items]="items" selectedIndex="0" class="picker" (selectedIndexChange)="selectedIndexChanged($event)"></ListPicker>

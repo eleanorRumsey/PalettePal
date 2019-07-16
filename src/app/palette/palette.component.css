@@ -1,5 +1,42 @@
+.main-container {
+    margin: 100px;
+}
+
+.current-palette {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.palette-title {
+    font-size: 30px;
+}
+
+.picker {
+    margin-bottom: 50px;
+    height: 300px;
+}
+
+.color-picker {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
 .color {
     border-radius: 20%;
-    padding-top: 70%;
-    margin: 15px;
+    margin: 7px; 
+}
+
+.selected-color {
+    border-width: 10px;
+    border-color: rgba(0, 0, 0, 0.61);
+    border-radius: 20%;
+    margin: 7px;
+}
+
+.save-button {
+    background-color: blue;
+    border-radius: 5;
+    color: white;
+    vertical-align: middle;
+    width: 20%;
 }

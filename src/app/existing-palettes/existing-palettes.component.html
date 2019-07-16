@@ -1,27 +1,15 @@
 <ActionBar class="action-bar" title="My Palettes">
     <NavigationButton ios:visibility="collapsed" android.systemIcon="ic_menu_back" (tap)="goBack()" android.position="popup"></NavigationButton>
-        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-            ios.position="left">
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"ios.position="left">
         </ActionItem>
     <Label class="action-bar-title" text="My Palettes"></Label>
         <ActionItem icon="res://menu" (tap)="onDrawerButtonTap()" ios.position="right" android.position="action-bar">
     </ActionItem>
 </ActionBar>
+<ScrollView>
     <FlexboxLayout flexDirection="column" alignItems="center">
         <Label text = "Welcome{{ user }}!" class="welcome-message"></Label>
-        <FlexboxLayout flexDirection="row" flexWrap="wrap" justifyContent="space-between" class="palettes-container">
-            <FlexboxLayout 
-                *ngFor="let palette of palettes" 
-                class="palette-preview" 
-                flexDirection="column" 
-                alignItems="center" 
-                justifyContent="center"
-                (tap)="editPalette(palette)">
-                <FlexboxLayout flexDirection="row" class="palette">
-                    <Label *ngFor="let color of palette.colors" backgroundColor="{{color}}" class="color-preview"></Label>
-                </FlexboxLayout>
-                <Label text="{{palette.name}}" class="palette-name"></Label>
-            </FlexboxLayout>
+        <FlexboxLayout flexDirection="column" justifyContent="space-between" class="palettes-container">
             <FlexboxLayout 
                 class="new-palette" 
                 flexDirection="column" 
@@ -31,5 +19,17 @@
                 <Label text="+" class="plus-sign"></Label>
                 <Label text="New palette" class="palette-name"></Label>
             </FlexboxLayout>
+            <FlexboxLayout *ngFor="let palette of palettes" 
+                class="palette-preview" 
+                flexDirection="column" 
+                alignItems="center" 
+                justifyContent="center" 
+                (tap)="editPalette(palette)">
+                <FlexboxLayout flexDirection="row" class="palette" justifyContent="center">
+                    <Label *ngFor="let color of palette.colors" backgroundColor="{{color}}" class="color-preview"></Label>
+                </FlexboxLayout>
+                <Label text="{{palette.name}}" class="palette-name"></Label>
+            </FlexboxLayout>
         </FlexboxLayout>
     </FlexboxLayout>
+</ScrollView>

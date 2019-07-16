@@ -79,7 +79,6 @@ export class ColorPickerComponent implements OnInit {
 
       if(params["palettes"]){
         let p = JSON.parse(params["palettes"]);
-        console.log("p: " + p);
         if(p.length > 0){
           this.palettes = p;
         }

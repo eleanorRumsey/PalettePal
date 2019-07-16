@@ -1,3 +1,4 @@
+
 .page {
     align-items: center;
     flex-direction: column;
@@ -10,15 +11,17 @@
     vertical-align: middle;
 }
 
-.logo { 
-    margin-top: 30;
-    margin-bottom: 12;
-    height: 90;
-    font-weight: bold;
+.logo {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    margin-bottom: 70;
+    text-align: center;
+    color: #404040; 
 }
 
 .error-message {
     color: #a94442;
+    margin-left: 15;
 }
 
 .header {

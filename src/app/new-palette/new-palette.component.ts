@@ -21,7 +21,6 @@ export class NewPaletteComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if(params["palettes"]){
         let p = JSON.parse(params["palettes"]);
-        console.log("p: " + p);
         if(p.length > 0){
           this.palettes = p;
         }
@@ -48,7 +47,6 @@ export class NewPaletteComponent implements OnInit {
 
   custom(){
     this.verifyName();
-    console.log(this.valid);
     if(this.valid){
       let navigationExtras: NavigationExtras = {
         queryParams: {
@@ -62,7 +60,6 @@ export class NewPaletteComponent implements OnInit {
 
   theme(){
     this.verifyName();
-    console.log(this.valid); 
     if(this.valid){
       let navigationExtras: NavigationExtras = {
         queryParams: {

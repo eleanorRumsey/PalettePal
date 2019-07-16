@@ -28,7 +28,6 @@ export class CreateNewAccountComponent implements OnInit {
     }
 
     createNewAcc(){
-        console.log("Creating new account...");
         let navigationExtras: NavigationExtras = {
             queryParams: {
                 "username": this.username,

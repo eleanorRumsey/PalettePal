@@ -6,6 +6,14 @@ import { AppComponent } from "./app.component";
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import { ColorPickerComponent } from './color-picker/color-picker.component';
+<<<<<<< Updated upstream
+=======
+import { PaletteComponent } from "./palette/palette.component";
+import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
+import { NewPaletteComponent } from "./new-palette/new-palette.component";
+import { ThemePickerComponent } from "./theme-picker/theme-picker.component";
+import { CreateNewAccountComponent } from "./create-new-acc.component/create-new-acc.component";
+>>>>>>> Stashed changes
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -23,9 +31,19 @@ import { ColorPickerComponent } from './color-picker/color-picker.component';
     ],
     declarations: [
         AppComponent,
+<<<<<<< Updated upstream
         ItemsComponent,
         ItemDetailComponent,
         ColorPickerComponent
+=======
+        LoginComponent,
+        ColorPickerComponent,
+        PaletteComponent,
+        ExistingPalettesComponent,
+        NewPaletteComponent,
+        ThemePickerComponent,
+        CreateNewAccountComponent
+>>>>>>> Stashed changes
     ],
     providers: [],
     schemas: [

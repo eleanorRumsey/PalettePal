@@ -5,13 +5,17 @@ import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
 @Component({
     selector: "CreateNewAccountComponent",
     moduleId: module.id,
-    templateUrl: "./create-new-acc.html",
-    styleUrls: ["./create-new-acc.css"]
+    templateUrl: "./create-new-acc.component.html",
+    styleUrls: ["./create-new-acc.component.css"]
 })
 
 export class CreateNewAccountComponent implements OnInit {
 
     username: string = '';
+    password: string = '';
+
+    validUsername = true;
+    validPassword = true;
 
     constructor(private router: Router) {
     }
@@ -23,10 +27,22 @@ export class CreateNewAccountComponent implements OnInit {
         console.log("Creating new account...");
         let navigationExtras: NavigationExtras = {
             queryParams: {
-                "username": this.username
+                "username": this.username,
+                "password": this.password
             }
           };
+
+          if(this.username.length === 0){
+             this.validUsername = false;
+          }
+
+          if(this.password.length === 0){
+            this.validPassword = false;
+          }
+
+          if (this.username.length !=0 && this.password.length != 0){
           this.router.navigate(["existing-palettes"], navigationExtras);
+          }
     }
 
     confirmUserName(args){

@@ -11,6 +11,13 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
 
+.action-bar {
+    background-color: #404040;
+}
+
+.action-bar-title {
+    color: white;
+}
 
 .logo {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

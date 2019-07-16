@@ -1,0 +1,9 @@
+<ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" android.systemIcon="ic_menu_back" (tap)="goBack()" android.position="popup"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+            ios.position="left">
+        </ActionItem>
+    <Label class="action-bar-title" text="My Palettes"></Label>
+        <ActionItem icon="res://menu" (tap)="onDrawerButtonTap()" ios.position="right" android.position="action-bar">
+    </ActionItem>
+</ActionBar>

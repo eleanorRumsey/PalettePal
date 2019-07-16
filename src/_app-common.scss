@@ -43,10 +43,18 @@
     }
 
     .sidedrawer-header {
-
         .sidedrawer-header-brand {
             color: #404040; 
         }
+    }
+  
+  .cactusProfilePicture {
+        margin: 15px 0 0 15px;
+        border-radius: 30;
+        border-color: gray;
+        
+        height:60;
+        width:60;
     }
 
     .sidedrawer-content {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
@@ -25,7 +26,7 @@ export class PaletteComponent implements OnInit {
   indexToChange: number = -1;
   newCode: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
       if(params["codes"]){
         this.codes = params["codes"];
@@ -66,5 +67,9 @@ export class PaletteComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
 }
+
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
+  }
 
 }

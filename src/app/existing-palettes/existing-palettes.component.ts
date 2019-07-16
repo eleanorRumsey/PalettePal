@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from "nativescript-angular/router";
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
@@ -22,7 +23,7 @@ export class ExistingPalettesComponent implements OnInit {
       colors: ["aqua", "aliceblue", "aquamarine", "palegoldenrod", "turquoise", "blue"]}
   ];
   
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
       this.user = params["username"];
     });
@@ -50,5 +51,9 @@ export class ExistingPalettesComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
 }
+
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
+  }
 
 }

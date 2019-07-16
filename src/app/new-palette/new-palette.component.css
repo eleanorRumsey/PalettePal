@@ -18,6 +18,15 @@
     margin: 20px;
 }
 
+.grid-preview {
+    border-width: 10px;
+    border-color: #404040; 
+    border-radius: 20%;
+    margin: 7px;
+    color: white;
+    text-align: center; 
+}
+
 .info-text {
     margin: 20px;
     font-size: 15px;

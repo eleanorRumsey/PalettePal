@@ -15,6 +15,14 @@
         <Label *ngIf="!this.valid" text="Invalid"></Label>
     </FlexboxLayout>
     <Label class="info-text" text="All palettes are 2 rows by 3 columns"></Label>
+    <FlexboxLayout flexDirection="row" flexWrap="wrap">
+        <Label width="110" height="110" class="grid-preview"></Label>
+        <Label width="110" height="110" class="grid-preview"></Label>
+        <Label width="110" height="110" class="grid-preview"></Label>
+        <Label width="110" height="110" class="grid-preview"></Label>
+        <Label width="110" height="110" class="grid-preview"></Label>
+        <Label width="110" height="110" class="grid-preview"></Label> 
+    </FlexboxLayout>
     <FlexboxLayout flexDirection="column">
         <Label class="proceed" text="I want to choose my own colors" (tap)="custom()"></Label>
         <Label class="proceed" text="Get me started with a theme" (tap)="theme()"></Label>

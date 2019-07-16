@@ -13,6 +13,8 @@ import {Page} from "tns-core-modules/ui/page";
 export class LoginComponent implements OnInit {
 
     username: string = '';
+    password: string = '';
+    valid: boolean = true;
 
     constructor(private router: Router, page: Page) {
         page.actionBarHidden = true;
@@ -22,12 +24,16 @@ export class LoginComponent implements OnInit {
     }
 
     login(){
+      if(this.username.length > 0 && this.password.length > 0){
         let navigationExtras: NavigationExtras = {
-            queryParams: {
-                "username": this.username
-            }
-          };
-          this.router.navigate(["existing-palettes"], navigationExtras);
+          queryParams: {
+              "username": this.username
+          }
+        };
+        this.router.navigate(["existing-palettes"], navigationExtras);
+      } else {
+        this.valid = false;
+      }
     }
 
     createNewAcc(){
@@ -40,12 +46,15 @@ export class LoginComponent implements OnInit {
     }
 
     confirmUserName(args){
-        let textField = <TextField>args.object;
-        this.username = textField.text;
+      this.valid = true;
+      let textField = <TextField>args.object;
+      this.username = textField.text;
     }
 
-    confirmPassword(){
-        console.log("Confirming password...");
+    confirmPassword(args){
+      this.valid = true;
+      let textField = <TextField>args.object;
+      this.password = textField.text;
     }
 
     guest(){

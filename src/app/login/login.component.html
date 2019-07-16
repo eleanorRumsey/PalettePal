@@ -1,7 +1,10 @@
 <FlexboxLayout class="page" alignItems="center" justifyContent="center">
     <StackLayout class="form">
+        <Image *ngIf="this.valid" src="~/app/images/cactus.png" width="110"></Image> 
+        <Image *ngIf="!this.valid" src="~/app/images/sadcactus.png" width="110"></Image> 
         <Label class="logo" text="Palette Pal"></Label>
-        <StackLayout class="input-field">
+        <Label *ngIf="!this.valid" text="Username or password is invalid." class="error-message"></Label> 
+        <StackLayout class="input-field"> 
             <TextField required class="username" hint="Username" autocorrect="false" autocapitalizationType="none"
                 (textChange)="confirmUserName($event)"></TextField>
         </StackLayout>

@@ -1,0 +1,41 @@
+<ActionBar class="action-bar">
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Palette"></Label>
+    </ActionBar> 
+    <FlexboxLayout flexDirection="column" class="main-container"> 
+        <Label text="{{name}}" class="palette-title"></Label>
+        <Label text="Press any colour to modify."></Label>
+        <FlexboxLayout flexDirection="row" flexWrap="wrap" alignItems="center" justifyContent="center" class="current-palette">
+            <FlexboxLayout *ngFor="let color of palette">
+                <Label *ngIf="this.palette.indexOf(color) !== this.indexToChange"
+                    text="{{ color.code }}"
+                    width="110"
+                    height="110"
+                    backgroundColor="{{ color.code }}" 
+                    class="color"
+                    (tap)="paletteColorSelected(color)"></Label>
+                <Label *ngIf="this.palette.indexOf(color) === this.indexToChange"
+                    text="{{ color.code }}"
+                    width="110" 
+                    height="110"  
+                    backgroundColor="{{ color.code }}" 
+                    class="selected-color"
+                    (tap)="paletteColorSelected(color)"></Label>
+            </FlexboxLayout>
+        </FlexboxLayout> 
+        <FlexboxLayout *ngIf="this.indexToChange > -1" flexDirection="column" class="color-picker">
+            <Label text="Choose a new colour below."></Label>
+            <ListPicker [items]="items" selectedIndex="0" class="picker" (selectedIndexChange)="selectedIndexChanged($event)"></ListPicker>
+            <FlexboxLayout flexDirection="row" flexWrap="wrap"> 
+                <FlexboxLayout *ngFor="let color of this.getArray()" (tap)="colorSelected(color)">
+                    <Label *ngIf="this.selectedArray !== this.getArray() || this.selectedIndex !== this.getArray().indexOf(color)"
+                        width="40" height="40" class="color" backgroundColor="{{ color }}"></Label>
+                    <Label *ngIf="this.selectedArray === this.getArray() && this.selectedIndex === this.getArray().indexOf(color)"
+                        width="40" height="40" class="selected-color" backgroundColor="{{ color }}"></Label>
+                </FlexboxLayout> 
+            </FlexboxLayout>
+        </FlexboxLayout>
+        <Button text="save" class="save-button" (tap)="save()"></Button>
+    </FlexboxLayout>

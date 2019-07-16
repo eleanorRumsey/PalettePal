@@ -1,19 +1,26 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
+import { LoginComponent } from './login/login.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
 =======
+>>>>>>> master
 import { PaletteComponent } from "./palette/palette.component";
 import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
 import { NewPaletteComponent } from "./new-palette/new-palette.component";
 import { ThemePickerComponent } from "./theme-picker/theme-picker.component";
+<<<<<<< HEAD
+import { CreateNewAccountComponent } from "./create-new-acc/create-new-acc.component";
+=======
 import { CreateNewAccountComponent } from "./create-new-acc.component/create-new-acc.component";
 >>>>>>> Stashed changes
+>>>>>>> master
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -27,15 +34,19 @@ import { CreateNewAccountComponent } from "./create-new-acc.component/create-new
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NativeScriptUISideDrawerModule
     ],
     declarations: [
         AppComponent,
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
         ItemsComponent,
         ItemDetailComponent,
         ColorPickerComponent
 =======
+>>>>>>> master
         LoginComponent,
         ColorPickerComponent,
         PaletteComponent,
@@ -43,7 +54,10 @@ import { CreateNewAccountComponent } from "./create-new-acc.component/create-new
         NewPaletteComponent,
         ThemePickerComponent,
         CreateNewAccountComponent
+<<<<<<< HEAD
+=======
 >>>>>>> Stashed changes
+>>>>>>> master
     ],
     providers: [],
     schemas: [

@@ -1,0 +1,18 @@
+<ActionBar class="action-bar">
+    <NavigationButton android.systemIcon="ic_menu_back" text="Back to ActionBar" (tap)="goBack()"></NavigationButton>
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="right" android.position="right">
+    </ActionItem>
+    <Label class="action-bar-title" text="Choose Theme"></Label>
+</ActionBar>
+<FlexboxLayout flexDirection="column" alignItems="center">
+    <ListPicker [items]="colors" selectedIndex="0" class="color-picker" (selectedIndexChange)="selectedColorIndexChanged($event)"></ListPicker>
+    <FlexboxLayout *ngFor="let theme of this.getThemes()" class="palette-preview" flexDirection="column" 
+        (tap)="tapTheme(theme)">
+        <FlexboxLayout flexDirection="row">
+            <Label *ngFor="let color of theme.colors" backgroundColor="{{color}}" class="color-preview"></Label>
+        </FlexboxLayout>
+        <Label text="{{theme.name}}"></Label>
+    </FlexboxLayout>
+</FlexboxLayout>

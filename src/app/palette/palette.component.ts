@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ListPicker } from "tns-core-modules/ui/list-picker";
-import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
-import { RouterExtensions } from "nativescript-angular/router";
+import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
 @Component({
-  selector: 'ns-color-picker',
-  templateUrl: './color-picker.component.html',
-  styleUrls: ['./color-picker.component.css'],
+  selector: 'ns-palette',
+  templateUrl: './palette.component.html',
+  styleUrls: ['./palette.component.css'],
   moduleId: module.id,
 })
-export class ColorPickerComponent implements OnInit {
+export class PaletteComponent implements OnInit {
 
   redHex = [
     '#FF0000','#ED1C24','#C40233','#F2003C',
@@ -61,27 +60,45 @@ export class ColorPickerComponent implements OnInit {
 
   pickerChoice: string = "Red";
 
+  palette = [
+    { index: 0, code: ''}, 
+    { index: 1, code: ''}, 
+    { index: 2, code: ''}, 
+    { index: 3, code: ''}, 
+    { index: 4, code: ''}, 
+    { index: 5, code: ''}, 
+  ];
+
+  codes = new Array(6);
+  name: string = '';
+  indexToChange: number = -1;
+  newCode: string = '';
+  palettes = [];
   selectedIndex: number = -1;
   selectedArray: string[] = [];
 
-  name: string;
-  indexToChange: number;
-  code: string;
-  codes: string[];
-  palettes: any;
-
-  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
+  constructor(private router: Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
-      this.name = params["name"];
-      this.indexToChange = params["index"];
-      this.code = params["code"];
-      this.codes = params["codes"];
+      
+      if(params["paletteName"]){
+        this.name = params["paletteName"];
+      }
 
       if(params["palettes"]){
-        let p = JSON.parse(params["palettes"]);
-        console.log("p: " + p);
-        if(p.length > 0){
-          this.palettes = p;
+        this.palettes = JSON.parse(params["palettes"]);
+        console.log("palettes: " + this.palettes);
+      }
+     
+      if(params["codes"]){
+        this.codes = params["codes"];
+         
+        for(let i in this.codes){
+          this.palette[i].code = this.codes[i]; 
+        }
+      } else {
+        for(let color of this.palette){
+          color.code = '#dcdfe3'; 
+          this.codes.push('#dcdfe3');
         }
       }
     });
@@ -90,13 +107,18 @@ export class ColorPickerComponent implements OnInit {
   ngOnInit() {
   }
 
+  paletteColorSelected(color: any){
+    if(color.index === this.indexToChange){
+      console.log("index is same, hiding...");
+      this.indexToChange = -1;
+    } else {
+      this.indexToChange = color.index;
+    }
+  } 
+
   colorSelected(color: string){
-    this.code = color;
-    this.codes[this.indexToChange] = this.code;
-    let hexes = this.getArray();
-    let index = hexes.indexOf(color);
-    this.selectedArray = hexes;
-    this.selectedIndex = index;
+    this.codes[this.indexToChange] = color;
+    this.palette[this.indexToChange].code = color;
   }
 
   getArray(): string[]{
@@ -130,27 +152,19 @@ export class ColorPickerComponent implements OnInit {
   }
 
   save(){
+    console.log(this.codes);
     let navigationExtras: NavigationExtras = {
       queryParams: {
-          "paletteName": this.name,
-          "index": this.indexToChange,
-          "code": this.code,
-          "codes": this.codes,
+          "name": this.name,
+          "codes": this.codes, 
           "palettes": JSON.stringify(this.palettes)
       }
     };
-    
-    this.router.navigate(["palette"], navigationExtras);
-  
+    this.router.navigate(["existing-palettes"], navigationExtras);
   }
-
-  goBack() {
-    this.routerExtensions.backToPreviousPage();
-  }
-
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
-  }
+}
 
 }

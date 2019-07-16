@@ -1,8 +1,7 @@
 .page {
     align-items: center;
     flex-direction: column;
-}
-
+  }
 .form {
   margin-left: 30;
   margin-right: 30;
@@ -36,7 +35,7 @@
 .btnCreateNewAcc {
   height: 50;
   margin: 30 5 15 5;
-  background-color: #404040;
+  background-color: #D51A1A;
   border-radius: 5;
   font-size: 20;
 }

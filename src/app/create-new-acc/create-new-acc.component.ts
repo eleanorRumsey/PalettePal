@@ -40,7 +40,11 @@ export class CreateNewAccountComponent implements OnInit {
             this.validPassword = false;
           }
 
+<<<<<<< HEAD:src/app/create-new-acc/create-new-acc.component.ts
           if (this.username.length > 0 && this.password.length > 0){ 
+=======
+          if (this.username.length !=0 && this.password.length != 0){
+>>>>>>> master:src/app/create-new-acc.component/create-new-acc.component.ts
           this.router.navigate(["existing-palettes"], navigationExtras);
           }
     }

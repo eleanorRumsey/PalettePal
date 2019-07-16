@@ -94,6 +94,6 @@ export class ExistingPalettesComponent implements OnInit {
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
-}
+  }
 
 }

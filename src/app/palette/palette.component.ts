@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
@@ -77,7 +78,7 @@ export class PaletteComponent implements OnInit {
   selectedIndex: number = -1;
   selectedArray: string[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
       
       if(params["paletteName"]){
@@ -166,5 +167,9 @@ export class PaletteComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
 }
+  
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
+  }
 
 }

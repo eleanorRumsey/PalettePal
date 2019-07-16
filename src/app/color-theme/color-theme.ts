@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
   selector: 'ns-color-theme',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorThemeComponent implements OnInit {
 
-  constructor() { 
+  constructor(private routerExtensions: RouterExtensions) { 
     var shadesThemeRed:String[];
     var shadesThemeBlue:String[];
     var shadesThemeYellow:String[];
@@ -35,4 +36,9 @@ export class ColorThemeComponent implements OnInit {
     shadesThemeBlue = ['#0080FF', '#00254A', '#006EDB', '#0074E8', '#006AD4', '#000405'];
 
   ngOnInit() {}
+
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
+  }
+
 }

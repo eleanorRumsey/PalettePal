@@ -10,6 +10,7 @@
         <Label class="info-text" text="Name your palette: "></Label>
         <TextField required class="palette-name" hint="Palette name" autocorrect="true" 
             (textChange)="setPaletteName($event)" autocorrect="false"></TextField>
+        <Label *ngIf="!this.valid" text="Invalid"></Label>
     </FlexboxLayout>
     <Label class="info-text" text="All palettes are 2 rows by 3 columns"></Label>
     <FlexboxLayout flexDirection="column">

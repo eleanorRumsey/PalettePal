@@ -15,6 +15,7 @@ export class NewPaletteComponent implements OnInit {
 
   paletteName: string = '';
   palettes: any;
+  valid: boolean = true;
 
   constructor(private router: Router, private routerExtensions: RouterExtensions, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
@@ -34,26 +35,43 @@ export class NewPaletteComponent implements OnInit {
   setPaletteName(args){
     let textField = <TextField>args.object;
     this.paletteName = textField.text;
+    this.valid = true;
+  }
+
+  verifyName(){
+    if(this.paletteName.length > 0){
+      this.valid = true;
+    } else {
+      this.valid = false;
+    } 
   }
 
   custom(){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-          "paletteName": this.paletteName,
-          "palettes": JSON.stringify(this.palettes)
-      }
-    };
-    this.router.navigate(["palette"], navigationExtras);
+    this.verifyName();
+    console.log(this.valid);
+    if(this.valid){
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+            "paletteName": this.paletteName,
+            "palettes": JSON.stringify(this.palettes)
+        }
+      };
+      this.router.navigate(["palette"], navigationExtras);
+    }
   }
 
   theme(){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-          "paletteName": this.paletteName,
-          "palettes": JSON.stringify(this.palettes)
-      }
-    };
-    this.router.navigate(["theme-picker"], navigationExtras);
+    this.verifyName();
+    console.log(this.valid); 
+    if(this.valid){
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+            "paletteName": this.paletteName,
+            "palettes": JSON.stringify(this.palettes)
+        }
+      };
+      this.router.navigate(["theme-picker"], navigationExtras);
+    }
   }
 
   goBack() {

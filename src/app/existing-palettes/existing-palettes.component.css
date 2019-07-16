@@ -16,7 +16,7 @@
     border-width: 10px;
     border-color: #dcdfe3;
     border-radius: 20%;
-    padding: 50px;
+    padding: 50px; 
 }
 
 .palette {
@@ -24,12 +24,12 @@
 }
 
 .color-preview {
-    width: 16%;
+    width: 16%; 
 }
 
 .palette-name {
     color:  #919191;
-    margin-bottom: 20px;
+    margin-top: 15px; 
     font-size: 16px;
 }
 
@@ -41,10 +41,12 @@
     border-width: 10px;
     border-color: #dcdfe3;
     border-radius: 20%;
+    padding: 50px;
 }
 
 .plus-sign {
     color:  #919191;
-    font-size: 50px;
-    margin: 0px 50px -20px 50px;
+    font-size: 40px;
+    margin-top: -37px;
+    margin-bottom: -25px;
 }

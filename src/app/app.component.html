@@ -8,9 +8,9 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
 <RadSideDrawer [drawerTransition]="sideDrawerTransition" drawerLocation="Right">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header">
-            <!-- <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label> -->
-            <Label class="sidedrawer-header-brand" text="User Name"></Label>
+            <Label class="sidedrawer-header-image"></Label>
         </StackLayout>
+        <!-- <Label class="sidedrawer-header-brand" text="User Name"></Label> --> 
         <ScrollView row="1" class="sidedrawer-content">
             <StackLayout>
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/existing-palettes')" (tap)="onNavItemTap('/existing-palettes')">

@@ -51,7 +51,6 @@ export class ThemePickerComponent implements OnInit {
 
       if(params["palettes"]){
         let p = JSON.parse(params["palettes"]);
-        console.log("p: " + p);
         if(p.length > 0){
           this.palettes = p;
         }
@@ -97,6 +96,10 @@ export class ThemePickerComponent implements OnInit {
       }
     };
     this.router.navigate(["palette"], navigationExtras);
+  }
+
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
   }
 
 }

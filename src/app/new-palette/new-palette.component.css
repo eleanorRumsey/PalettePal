@@ -4,13 +4,13 @@
 
 .palette-name {
     font-size: 40px;
-    color: green;
+    color: #404040; 
 }
 
 .proceed {
     width: 85%;
     border-radius: 20%;
-    border-width: 3px;
+    border-width: 10px;
     border-color: #dcdfe3;
     text-align: center;
     font-size: 20px;
@@ -20,14 +20,26 @@
 
 .grid-preview {
     border-width: 10px;
-    border-color: #404040; 
+    border-color:  #dcdfe3; 
     border-radius: 20%;
     margin: 7px;
     color: white;
     text-align: center; 
 }
 
+.name-container {
+    margin-bottom: 300px; 
+}
+
+.error-message {
+    color: #a94442;
+}
+
 .info-text {
     margin: 20px;
     font-size: 15px;
+}
+
+.button-container {
+    margin-top: 300px; 
 }

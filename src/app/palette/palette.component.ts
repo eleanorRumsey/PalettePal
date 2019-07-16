@@ -87,19 +87,19 @@ export class PaletteComponent implements OnInit {
 
       if(params["palettes"]){
         this.palettes = JSON.parse(params["palettes"]);
-        console.log("palettes: " + this.palettes);
       }
      
       if(params["codes"]){
         this.codes = params["codes"];
+        console.log("codes (palette): " + this.codes);
          
         for(let i in this.codes){
           this.palette[i].code = this.codes[i]; 
         }
       } else {
-        for(let color of this.palette){
+        for(let color of this.palette){ 
           color.code = '#dcdfe3'; 
-          this.codes.push('#dcdfe3');
+          this.codes[this.palette.indexOf(color)]='#dcdfe3';
         }
       }
     });
@@ -110,7 +110,6 @@ export class PaletteComponent implements OnInit {
 
   paletteColorSelected(color: any){
     if(color.index === this.indexToChange){
-      console.log("index is same, hiding...");
       this.indexToChange = -1;
     } else {
       this.indexToChange = color.index;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
-import {Router, NavigationExtras, ActivatedRoute} from "@angular/router";
+import {Router, NavigationExtras, ActivatedRoute, RouteConfigLoadStart} from "@angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
@@ -36,13 +36,13 @@ export class ExistingPalettesComponent implements OnInit {
 
       if(params["palettes"]){
         let p = JSON.parse(params["palettes"]);
-        console.log("p: " + p);
         if(p.length > 0){
           this.palettes = p;
         }
       }
 
       if(params["name"] && params["codes"]){
+
         let newPalette = {
           name: params["name"],
           colors: params["codes"]
@@ -59,7 +59,6 @@ export class ExistingPalettesComponent implements OnInit {
         }
 
         if(!exists){
-          console.log("palette is new!");
           this.palettes.push(newPalette);
         }
       }
@@ -83,7 +82,6 @@ export class ExistingPalettesComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
           "index": -1,
-          "code": '',
           "codes": palette.colors,
           "paletteName": palette.name,
           "palettes": JSON.stringify(this.palettes)

@@ -19,11 +19,13 @@
   font-weight: 600;
   margin-bottom: 70;
   text-align: center;
+  margin-top: 100; 
 }
 
 .input-field {
   margin-bottom: 25;
 }
+
 .username {
   font-size: 18;
 }
@@ -35,9 +37,10 @@
 .btnCreateNewAcc {
   height: 50;
   margin: 30 5 15 5;
-  background-color: #D51A1A;
+  background-color: #404040;
   border-radius: 5;
   font-size: 20;
+  color: white;
 }
 
 .validation {
@@ -48,6 +51,7 @@
 .guest {
   text-decoration: underline;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .usernameError{

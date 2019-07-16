@@ -1,6 +1,6 @@
 <FlexboxLayout class="page">
     <StackLayout class="form">
-        <Label class="header" text="Palette Pal"></Label>
+        <Label class="header" text="Create an account"></Label>
         <StackLayout class="input-field">
             <TextField required class="username" hint="Username" autocorrect="false" autocapitalizationType="none"
                 (textChange)="confirmUserName($event)"></TextField>
@@ -16,6 +16,8 @@
         <Label class="passwordError" *ngIf="!this.validPassword" text="Password can not be left empty"></Label>
     </StackLayout>
     <Label class="guest" text="I don't want to create an account" (tap)="guest()"></Label>
+    <Image *ngIf="this.valid" src="~/app/images/cactus.png" width="110"></Image> 
+    <Image *ngIf="!this.valid" src="~/app/images/sadcactus.png" width="110"></Image> 
 </FlexboxLayout>
 
     

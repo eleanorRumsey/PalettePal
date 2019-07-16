@@ -1,15 +1,11 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { LoginComponent } from './login/login.component';
+import { ItemsComponent } from "./item/items.component";
+import { ItemDetailComponent } from "./item/item-detail.component";
 import { ColorPickerComponent } from './color-picker/color-picker.component';
-import { PaletteComponent } from "./palette/palette.component";
-import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
-import { NewPaletteComponent } from "./new-palette/new-palette.component";
-import { ThemePickerComponent } from "./theme-picker/theme-picker.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -23,17 +19,13 @@ import { ThemePickerComponent } from "./theme-picker/theme-picker.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule,
-        NativeScriptUISideDrawerModule
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
-        LoginComponent,
-        ColorPickerComponent,
-        PaletteComponent,
-        ExistingPalettesComponent,
-        NewPaletteComponent,
-        ThemePickerComponent
+        ItemsComponent,
+        ItemDetailComponent,
+        ColorPickerComponent
     ],
     providers: [],
     schemas: [

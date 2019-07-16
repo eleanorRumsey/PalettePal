@@ -6,21 +6,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from './login/login.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> master
 import { PaletteComponent } from "./palette/palette.component";
 import { ExistingPalettesComponent } from "./existing-palettes/existing-palettes.component";
 import { NewPaletteComponent } from "./new-palette/new-palette.component";
 import { ThemePickerComponent } from "./theme-picker/theme-picker.component";
-<<<<<<< HEAD
 import { CreateNewAccountComponent } from "./create-new-acc/create-new-acc.component";
-=======
-import { CreateNewAccountComponent } from "./create-new-acc.component/create-new-acc.component";
->>>>>>> Stashed changes
->>>>>>> master
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -39,14 +29,7 @@ import { CreateNewAccountComponent } from "./create-new-acc.component/create-new
     ],
     declarations: [
         AppComponent,
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-        ItemsComponent,
-        ItemDetailComponent,
-        ColorPickerComponent
-=======
->>>>>>> master
+        ColorPickerComponent,
         LoginComponent,
         ColorPickerComponent,
         PaletteComponent,
@@ -54,10 +37,6 @@ import { CreateNewAccountComponent } from "./create-new-acc.component/create-new
         NewPaletteComponent,
         ThemePickerComponent,
         CreateNewAccountComponent
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> master
     ],
     providers: [],
     schemas: [

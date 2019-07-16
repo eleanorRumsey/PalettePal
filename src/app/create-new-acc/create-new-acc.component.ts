@@ -40,8 +40,8 @@ export class CreateNewAccountComponent implements OnInit {
             this.validPassword = false;
           }
 
-          if (this.username.length !=0 && this.password.length != 0){
-          this.router.navigate(["existing-palettes"], navigationExtras);
+          if (this.username.length > 0 && this.password.length > 0){ 
+            this.router.navigate(["existing-palettes"], navigationExtras);
           }
     }
 
@@ -54,5 +54,4 @@ export class CreateNewAccountComponent implements OnInit {
         let textField = <TextField>args.object;
         this.password = textField.text;
     }
-
 }

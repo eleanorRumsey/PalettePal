@@ -12,12 +12,6 @@ import { NewPaletteComponent } from "./new-palette/new-palette.component";
 import { ThemePickerComponent } from "./theme-picker/theme-picker.component";
 import { CreateNewAccountComponent } from "./create-new-acc/create-new-acc.component";
 
-// Uncomment and add to NgModule imports if you need to use two-way binding
-// import { NativeScriptFormsModule } from "nativescript-angular/forms";
-
-// Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
-// import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
-
 @NgModule({
     bootstrap: [
         AppComponent
@@ -29,7 +23,6 @@ import { CreateNewAccountComponent } from "./create-new-acc/create-new-acc.compo
     ],
     declarations: [
         AppComponent,
-        ColorPickerComponent,
         LoginComponent,
         ColorPickerComponent,
         PaletteComponent,
@@ -43,7 +36,5 @@ import { CreateNewAccountComponent } from "./create-new-acc/create-new-acc.compo
         NO_ERRORS_SCHEMA
     ]
 })
-/*
-Pass your application module to the bootstrapModule function located in main.ts to start your app
-*/
+
 export class AppModule { }

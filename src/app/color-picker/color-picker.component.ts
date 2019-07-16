@@ -61,15 +61,29 @@ export class ColorPickerComponent implements OnInit {
 
   pickerChoice: string = "Red";
 
+  selectedIndex: number = -1;
+  selectedArray: string[] = [];
+
+  name: string;
   indexToChange: number;
   code: string;
   codes: string[];
+  palettes: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
+      this.name = params["name"];
       this.indexToChange = params["index"];
       this.code = params["code"];
       this.codes = params["codes"];
+
+      if(params["palettes"]){
+        let p = JSON.parse(params["palettes"]);
+        console.log("p: " + p);
+        if(p.length > 0){
+          this.palettes = p;
+        }
+      }
     });
   }
 
@@ -79,6 +93,10 @@ export class ColorPickerComponent implements OnInit {
   colorSelected(color: string){
     this.code = color;
     this.codes[this.indexToChange] = this.code;
+    let hexes = this.getArray();
+    let index = hexes.indexOf(color);
+    this.selectedArray = hexes;
+    this.selectedIndex = index;
   }
 
   getArray(): string[]{
@@ -114,9 +132,11 @@ export class ColorPickerComponent implements OnInit {
   save(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
+          "paletteName": this.name,
           "index": this.indexToChange,
           "code": this.code,
-          "codes": this.codes
+          "codes": this.codes,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     
@@ -124,12 +144,13 @@ export class ColorPickerComponent implements OnInit {
   
   }
 
+  goBack() {
+    this.routerExtensions.backToPreviousPage();
+  }
+
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
-}
-  goBack() {
-    this.routerExtensions.backToPreviousPage();
   }
 
 }

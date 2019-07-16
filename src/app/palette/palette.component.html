@@ -1,5 +1,5 @@
 <ActionBar class="action-bar">
-    <NavigationButton ios:visibility="collapsed" android.systemIcon="ic_menu_back" (tap)="goBack()" android.position="popup"></NavigationButton>
+        <NavigationButton ios:visibility="collapsed" android.systemIcon="ic_menu_back" (tap)="goBack()" android.position="popup"></NavigationButton>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
             ios.position="left">
         </ActionItem>
@@ -7,17 +7,38 @@
         <ActionItem icon="res://menu" (tap)="onDrawerButtonTap()" ios.position="right" android.position="action-bar">
     </ActionItem>
 </ActionBar>
-<FlexboxLayout flexDirection="column" alignItems="center" justifyContent="space-around">
-    <FlexboxLayout flexDirection="row" flexWrap="wrap" width="350" alignItems="center" justifyContent="center">
-        <Label 
-            *ngFor="let color of palette" 
-            text="{{ color.code }}" 
-            width="100" 
-            height="100" 
-            backgroundColor="{{ color.code }}" 
-            class="color"
-            (tap)="colorSelected(color)"
-            ></Label>
+    <FlexboxLayout flexDirection="column" class="main-container"> 
+        <Label text="{{name}}" class="palette-title"></Label>
+        <Label text="Press any colour to modify."></Label>
+        <FlexboxLayout flexDirection="row" flexWrap="wrap" alignItems="center" justifyContent="center" class="current-palette">
+            <FlexboxLayout *ngFor="let color of palette">
+                <Label *ngIf="this.palette.indexOf(color) !== this.indexToChange"
+                    text="{{ color.code }}"
+                    width="110"
+                    height="110"
+                    backgroundColor="{{ color.code }}" 
+                    class="color"
+                    (tap)="paletteColorSelected(color)"></Label>
+                <Label *ngIf="this.palette.indexOf(color) === this.indexToChange"
+                    text="{{ color.code }}"
+                    width="110" 
+                    height="110"  
+                    backgroundColor="{{ color.code }}" 
+                    class="selected-color"
+                    (tap)="paletteColorSelected(color)"></Label>
+            </FlexboxLayout>
+        </FlexboxLayout> 
+        <FlexboxLayout *ngIf="this.indexToChange > -1" flexDirection="column" class="color-picker">
+            <Label text="Choose a new colour below."></Label>
+            <ListPicker [items]="items" selectedIndex="0" class="picker" (selectedIndexChange)="selectedIndexChanged($event)"></ListPicker>
+            <FlexboxLayout flexDirection="row" flexWrap="wrap"> 
+                <FlexboxLayout *ngFor="let color of this.getArray()" (tap)="colorSelected(color)">
+                    <Label *ngIf="this.selectedArray !== this.getArray() || this.selectedIndex !== this.getArray().indexOf(color)"
+                        width="40" height="40" class="color" backgroundColor="{{ color }}"></Label>
+                    <Label *ngIf="this.selectedArray === this.getArray() && this.selectedIndex === this.getArray().indexOf(color)"
+                        width="40" height="40" class="selected-color" backgroundColor="{{ color }}"></Label>
+                </FlexboxLayout> 
+            </FlexboxLayout>
+        </FlexboxLayout>
+        <Button text="save" class="save-button" (tap)="save()"></Button>
     </FlexboxLayout>
-    <Button text="save" class="save-button"></Button>
-</FlexboxLayout>

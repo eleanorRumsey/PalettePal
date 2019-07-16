@@ -3,7 +3,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { AppRoutingModule } from "../app-routing.module";
-import { LoginComponent } from "./login.component";
+import { CreateNewAccountComponent } from "./create-new-acc.component";
 
 @NgModule({
     imports: [
@@ -12,10 +12,10 @@ import { LoginComponent } from "./login.component";
         NativeScriptFormsModule
     ],
     declarations: [
-        LoginComponent
+        CreateNewAccountComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
-export class loginModule { }
+export class createNewAccModule { }

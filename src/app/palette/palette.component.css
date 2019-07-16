@@ -1,5 +1,46 @@
+.main-container {
+    margin: 100px;
+}
+
+.current-palette {
+    margin: 50px -20px 150px -20px;
+}
+
+.palette-title {
+    font-size: 30px;
+    margin-bottom: 100px;
+}
+
+.picker {
+    margin-bottom: 50px;
+    height: 300px;
+}
+
+.color-picker {
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
 .color {
     border-radius: 20%;
-    padding-top: 70%;
-    margin: 15px;
+    margin: 7px; 
+    color: white;
+    text-align: center;
+}
+
+.selected-color {
+    border-width: 10px;
+    border-color: #404040; 
+    border-radius: 20%;
+    margin: 7px;
+    color: white;
+    text-align: center;
+}
+
+.save-button {
+    background-color:#404040;
+    border-radius: 5;
+    color: white;
+    vertical-align: middle;
+    width: 20%;
 }

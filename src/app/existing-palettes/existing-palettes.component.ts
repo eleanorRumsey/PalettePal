@@ -14,18 +14,56 @@ export class ExistingPalettesComponent implements OnInit {
 
   user = "";
 
-  mockPalettes = [
-    { name: "Palette 1",
-      colors: ["red", "blue", "pink", "goldenrod", "blueviolet", "blue"]},
-    { name: "Palette 2",
-      colors: ["pink", "yellow", "yellowgreen", "black", "red", "lightblue"]},
-    { name: "Palette 3",
-      colors: ["aqua", "aliceblue", "aquamarine", "palegoldenrod", "turquoise", "blue"]}
-  ];
+  palettes = [
+    { name: "Garden Theme",
+      colors: ['#08BF20','#03400B','#058015','#804B28','#BF6B34','#C27388']},
+    { name: "Palette Theme",
+      colors: ['#FFBAB5','#FDF5CC','#CAFDCD','#D3EFFC','#E0C3FD','#FDFAAF']},
+    { name: "School Project Theme",
+      colors: ['#7D7C56','#BF9275','#C07892','#8F89C0','#7AB9C0','#6BC066']}
+  ]; 
   
   constructor(private router: Router, private route: ActivatedRoute, private routerExtensions: RouterExtensions) { 
     this.route.queryParams.subscribe(params => {
-      this.user = params["username"];
+
+      if(params["username"]){
+        let name = params["username"];
+        if(name.length > 0){
+          name = ", " + name;
+          this.user = name;
+        }
+      }
+
+      if(params["palettes"]){
+        let p = JSON.parse(params["palettes"]);
+        console.log("p: " + p);
+        if(p.length > 0){
+          this.palettes = p;
+        }
+      }
+
+      if(params["name"] && params["codes"]){
+        let newPalette = {
+          name: params["name"],
+          colors: params["codes"]
+        }
+
+        let exists = false;
+
+        for(let palette of this.palettes){
+          if(palette.name === newPalette.name){
+            exists = true;
+            let index = this.palettes.indexOf(palette);
+            this.palettes[index] = newPalette;
+          }
+        }
+
+        if(!exists){
+          console.log("palette is new!");
+          this.palettes.push(newPalette);
+        }
+      }
+      
     });
   }
 
@@ -33,7 +71,12 @@ export class ExistingPalettesComponent implements OnInit {
   }
 
   createNewPalette(){
-    this.router.navigate(["palette"]);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "palettes": JSON.stringify(this.palettes)
+      }
+    };
+    this.router.navigate(["new-palette"], navigationExtras);
   }
 
   editPalette(palette: any){
@@ -41,7 +84,9 @@ export class ExistingPalettesComponent implements OnInit {
       queryParams: {
           "index": -1,
           "code": '',
-          "codes": palette.colors
+          "codes": palette.colors,
+          "paletteName": palette.name,
+          "palettes": JSON.stringify(this.palettes)
       }
     };
     this.router.navigate(["palette"], navigationExtras);
@@ -50,7 +95,7 @@ export class ExistingPalettesComponent implements OnInit {
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
-}
+  }
 
   goBack() {
     this.routerExtensions.backToPreviousPage();

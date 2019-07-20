@@ -36,15 +36,16 @@
             background-repeat: no-repeat;
             background-size: 300px;
         }
-
-        // .footnote {
-        //     color: rgba($ab-color, 0.5);
-        // }
     }
 
     .sidedrawer-header {
-        .sidedrawer-header-brand {
-            color: #404040; 
+        background-color: #404040; 
+
+        .sidedrawer-header-brand { 
+            color: white;
+            font-size: 20px; 
+            margin-left: 85;
+            margin-top: 15;
         }
     }
   
